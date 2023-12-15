@@ -19,6 +19,7 @@ function getPlayerChoice(userInput) {
     return userInput.toLowerCase();
 }
 
+let score;
 function playRound(playerSelection, computerSelection) {
     playerSelection = getPlayerChoice();
     computerSelection = getComputerChoice();
@@ -30,17 +31,23 @@ function playRound(playerSelection, computerSelection) {
     }
 
     if (playerSelection === `rock` && computerSelection === `scissors`) {
-        return `You win! Rock beats Scissors`;
+        score = 1;
     } else if (playerSelection === `scissors` && computerSelection === `paper`) {
-        return `You win! Scissors beats Paper`;
+        score = 1;
     } else if (playerSelection === `paper` && computerSelection === `rock`) {
-        return `You win! Paper beats Rock`;
+        score = 1;
     } else if (playerSelection === `rock` && computerSelection === `paper`) {
-        return `You loose! Paper beats Rock`;
+        score = 0;
     } else if (playerSelection === `paper` && computerSelection === `scissors`) {
-        return `You loose! Scissors beats Paper`;
+        score = 0;
     } else if (playerSelection === `scissors` && computerSelection === `rock`) {
-        return `You loose! Rock beats Scissors`;
+        score = 0;
+    }
+
+    if (score === 1) {
+        return `You win! ${playerSelection} beats ${computerSelection}`
+    } else {
+        return `You loose! ${computerSelection} beats ${playerSelection}`
     }
 }
 

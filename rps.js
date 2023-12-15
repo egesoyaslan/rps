@@ -30,17 +30,13 @@ function playRound(playerSelection, computerSelection) {
         computerSelection = getComputerChoice();
     }
 
-    if (playerSelection === `rock` && computerSelection === `scissors`) {
+    if ((playerSelection === `rock` && computerSelection === `scissors`)
+    || (playerSelection === `scissors` && computerSelection === `paper`)
+    || (playerSelection === `paper` && computerSelection === `rock`)) {
         score = 1;
-    } else if (playerSelection === `scissors` && computerSelection === `paper`) {
-        score = 1;
-    } else if (playerSelection === `paper` && computerSelection === `rock`) {
-        score = 1;
-    } else if (playerSelection === `rock` && computerSelection === `paper`) {
-        score = 0;
-    } else if (playerSelection === `paper` && computerSelection === `scissors`) {
-        score = 0;
-    } else if (playerSelection === `scissors` && computerSelection === `rock`) {
+    } else if ((playerSelection === `rock` && computerSelection === `paper`)
+    || (playerSelection === `paper` && computerSelection === `scissors`)
+    || (playerSelection === `scissors` && computerSelection === `rock`)) {
         score = 0;
     }
 

@@ -60,4 +60,6 @@ function game(n = 5) {
     } else {
         console.log(`You lost to a computer...`);
     }
+
+    return winCount = 0;
 }

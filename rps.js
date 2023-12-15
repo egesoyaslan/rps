@@ -19,7 +19,8 @@ function getPlayerChoice(userInput) {
     return userInput.toLowerCase();
 }
 
-let winCount = 0;
+let playerWinCount = 0;
+let computerWinCount = 0;
 function playRound(playerSelection, computerSelection) {
     playerSelection = getPlayerChoice();
     computerSelection = getComputerChoice();
@@ -43,24 +44,27 @@ function playRound(playerSelection, computerSelection) {
 
     if (score === 1) {
         console.log(`You win! ${playerSelection} beats ${computerSelection}`);
-        return winCount += 1;
+        return playerWinCount += 1;
     } else {
         console.log(`You loose! ${computerSelection} beats ${playerSelection}`);
-        return winCount;
+        return computerWinCount += 1;
     }
 }
 
 function game(n = 5) {
     for (; n > 0; n--){
         playRound();
-        console.log(`Number of wins: ${winCount}`)
+        console.log(`SCORE | Player: ${playerWinCount} | Computer: ${computerWinCount}`)
     }
 
-    if (winCount > 2) {
+    if (playerWinCount > computerWinCount) {
         console.log(`You won the game!`);
     } else {
         console.log(`You lost to a computer...`);
     }
 
-    return winCount = 0;
+    playerWinCount = 0;
+    computerWinCount = 0;
+
+    return `Good Game!`;
 }

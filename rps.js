@@ -52,7 +52,8 @@ function playRound(playerSelection, computerSelection) {
 
 function game(n = 5) {
     for (; n > 0; n--){
-        console.log(playRound());
+        playRound();
+        console.log(`Number of wins: ${winCount}`)
     }
 
     if (winCount > 2) {

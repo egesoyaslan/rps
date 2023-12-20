@@ -47,6 +47,8 @@ function playRound(computerSelection) {
 }
 
 const buttons = document.querySelector(`.select`);
+const result = document.querySelector(`.result`);
+const score = document.querySelector(`.score`);
 
 buttons.addEventListener(`click`, (e) => {
     const target = e.target;
@@ -64,7 +66,17 @@ buttons.addEventListener(`click`, (e) => {
     }
 
     playRound();
-    const result = document.querySelector(`.result`);
-    result.textContent = string;
-});
 
+    result.textContent = string;
+    score.textContent = `${playerWinCount} - ${computerWinCount}`;
+
+    if (playerWinCount === 5) {
+        result.textContent = `You win.`
+        playerWinCount = 0;
+        computerWinCount = 0;
+    } else if (computerWinCount === 5) {
+        result.textContent = `You loose.`
+        playerWinCount = 0;
+        computerWinCount = 0;
+    }
+});

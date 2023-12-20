@@ -1,4 +1,5 @@
 let playerSelection;
+let string;
 let playerWinCount = 0;
 let computerWinCount = 0;
 
@@ -22,7 +23,7 @@ function playRound(computerSelection) {
     computerSelection = getComputerChoice();
 
     if (playerSelection === computerSelection) {
-        console.log(`Its a tie! Throw again`);
+        string = `Its a tie! Throw again`;
     }
 
     let score;
@@ -37,10 +38,10 @@ function playRound(computerSelection) {
     }
 
     if (score === 1) {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        string = `You win! ${playerSelection} beats ${computerSelection}`;
         return playerWinCount += 1;
     } else if (score === 0) {
-        console.log(`You loose! ${computerSelection} beats ${playerSelection}`);
+        string = `You loose! ${computerSelection} beats ${playerSelection}`;
         return computerWinCount += 1;
     }
 }
@@ -63,5 +64,7 @@ buttons.addEventListener(`click`, (e) => {
     }
 
     playRound();
+    const result = document.querySelector(`.result`);
+    result.textContent = string;
 });
 

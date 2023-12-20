@@ -1,3 +1,7 @@
+let playerSelection;
+let playerWinCount = 0;
+let computerWinCount = 0;
+
 function getComputerChoice(result) {
     let num = Math.floor(Math.random() * 3) +1;
     switch(num) {
@@ -14,21 +18,11 @@ function getComputerChoice(result) {
     return result;
 }
 
-function getPlayerChoice(userInput) {
-    userInput = prompt("Rock, Paper or Scissors?");
-    return userInput.toLowerCase();
-}
-
-let playerWinCount = 0;
-let computerWinCount = 0;
-function playRound(playerSelection, computerSelection) {
-    playerSelection = getPlayerChoice();
+function playRound(computerSelection) {
     computerSelection = getComputerChoice();
 
-    for (;playerSelection === computerSelection;) {
+    if (playerSelection === computerSelection) {
         console.log(`Its a tie! Throw again`);
-        playerSelection = getPlayerChoice();
-        computerSelection = getComputerChoice();
     }
 
     let score;
@@ -45,26 +39,29 @@ function playRound(playerSelection, computerSelection) {
     if (score === 1) {
         console.log(`You win! ${playerSelection} beats ${computerSelection}`);
         return playerWinCount += 1;
-    } else {
+    } else if (score === 0) {
         console.log(`You loose! ${computerSelection} beats ${playerSelection}`);
         return computerWinCount += 1;
     }
 }
 
-function game(n = 5) {
-    for (; n > 0; n--){
-        playRound();
-        console.log(`SCORE | Player: ${playerWinCount} | Computer: ${computerWinCount}`)
+const buttons = document.querySelector(`.select`);
+
+buttons.addEventListener(`click`, (e) => {
+    const target = e.target;
+
+    switch(target.id) {
+        case `rock`:
+            playerSelection = `rock`;
+            break;
+        case `paper`:
+            playerSelection = `paper`;
+            break;
+        case `scissors`:
+            playerSelection = `scissors`;
+            break;
     }
 
-    if (playerWinCount > computerWinCount) {
-        console.log(`You won the game!`);
-    } else {
-        console.log(`You lost to a computer...`);
-    }
+    playRound();
+});
 
-    playerWinCount = 0;
-    computerWinCount = 0;
-
-    return `Good Game!`;
-}

@@ -7,13 +7,13 @@ function getComputerChoice(result) {
     let num = Math.floor(Math.random() * 3) +1;
     switch(num) {
         case 1:
-            result = `rock`
+            result = `rock`;
             break;
         case 2:
-            result = `paper`
+            result = `paper`;
             break;
         case 3:
-            result = `scissors`
+            result = `scissors`;
             break;
     }
     return result;
@@ -71,11 +71,11 @@ buttons.addEventListener(`click`, (e) => {
     score.textContent = `${playerWinCount} - ${computerWinCount}`;
 
     if (playerWinCount === 5) {
-        result.textContent = `You win.`
+        result.textContent = `You win.`;
         playerWinCount = 0;
         computerWinCount = 0;
     } else if (computerWinCount === 5) {
-        result.textContent = `You loose.`
+        result.textContent = `You loose.`;
         playerWinCount = 0;
         computerWinCount = 0;
     }
